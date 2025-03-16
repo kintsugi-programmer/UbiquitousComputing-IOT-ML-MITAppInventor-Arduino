@@ -26,7 +26,6 @@ debug.log
 *.swp
 
 # FastAPI static and media files (uploads)
-uploads/
 staticfiles/
 media/
 
