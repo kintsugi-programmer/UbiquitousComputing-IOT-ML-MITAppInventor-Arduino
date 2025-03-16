@@ -1,6 +1,9 @@
 from flask import Flask, request, jsonify
 import os
 
+# modal load code
+
+
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
@@ -36,7 +39,8 @@ def upload_file():
         save_path = os.path.join(UPLOAD_FOLDER, unique_filename)
         uploaded_file.save(save_path)
 
-        return jsonify({"message": "File uploaded successfully!", "filename": unique_filename}), 200
+        
+        # return jsonify({"message": "File uploaded successfully!", "filename": unique_filename}), 200
 
     # ✅ If no file in `request.files`, fallback to raw binary data
     raw_data = request.get_data()
@@ -46,9 +50,9 @@ def upload_file():
         with open(file_path, "wb") as f:
             f.write(raw_data)
 
-        return jsonify({"message": "File uploaded as binary!", "filename": unique_filename}), 200
+        # return jsonify({"message": "File uploaded as binary!", "filename": unique_filename}), 200
 
-    return "No file received", 400
+    # return "No file received", 400
 
 
 @app.route('/upload2', methods=['POST'])
@@ -87,8 +91,16 @@ def upload2():
                 "message": "File and data uploaded successfully!",
                 "filename": uploaded_file.filename
             }), 200
+    
+    predict()
+    # return jsonify({"message": "Data received without a file"}), 200
 
-    return jsonify({"message": "Data received without a file"}), 200
+
+def predict():
+    prediction = ''
+    # modal run code
+    return prediction
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
