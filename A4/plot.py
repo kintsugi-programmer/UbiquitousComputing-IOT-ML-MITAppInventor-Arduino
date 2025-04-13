@@ -9,7 +9,7 @@ plt.ioff()
 
 # --- Loop through all specified folders ---
 for folder in folders:
-    outfolder = os.path.join(folder, folder.replace("csv_outputs", "plot"))
+    outfolder = os.path.join(folder.replace("csv_outputs", "plot"))
     os.makedirs(outfolder, exist_ok=True)
 
     for file in os.listdir(folder):
